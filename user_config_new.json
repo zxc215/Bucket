@@ -1,0 +1,94 @@
+{
+		"tables" : {
+				"ports" : {
+						"rules" : [
+						{
+								"name" : "ports_1",
+								"match" : {
+										"ipv4.protocol" : {
+												"value" : "6"
+									}
+								},
+								"action" : {
+										"type" : "set_tcp_ports",
+										"data" : {}
+								}
+						},
+						{
+								"name" : "ports_2",
+								"match" : {
+										"ipv4.protocol" : {
+												"value" : "17"
+									}
+								},
+								"action" : {
+										"type" : "set_udp_ports",
+										"data" : {}
+								}
+						}
+						]
+				},
+				"load_meta" : {
+						"default_rule" : {
+								"name" : "load_meta_default",
+								"action" : {
+										"type" : "load_up",
+										"data" : {}
+								}
+						}
+				},
+				"table1" : {
+						"default_rule" : {
+								"name" : "table1_default",
+								"action" : {
+										"type" : "up_call",
+										"data" : {}
+								}
+						},
+						"rules" : [
+						{
+								"name" : "table1_1",
+								"match" : {
+										"Ftuple.tuples" : {
+												"value" : "792281630049477301766979846344",
+												"mask" : "0xffffff00ffffff00f0fff0fff0"
+									}
+								},
+								"action" : {
+										"type" : "_nop",
+										"data" : {}
+								}
+						}
+						]
+				},
+				"table2" : {
+						"default_rule" : {
+								"name" : "table2_default",
+								"action" : {
+										"type" : "_drop",
+										"data" : {}
+								}
+						},
+						"rules" : [
+						{
+								"name" : "table2_1",
+								"match" : {
+										"Ftuple.tuples" : {
+												"value" : "792281630049477301766979846344",
+												"mask" : "0xffffff00ffffff00f0fff0fff0"
+									}
+								},
+								"action" : {
+										"type" : "send_out",
+										"data" : {
+												"outport" : {
+														"value" : "v0.1"
+												}
+										}
+								}
+						}
+						]
+						
+				}
+		}
+}
