@@ -13,6 +13,9 @@
 
 5.Restart 4 Virtual Interfaces:
 	sudo /home/ovs1/xiaochen/workspace/VFs_restart.sh
+	if error occurs:
+		sudo /home/ovs1/xiaochen/workspace/VF_after_reboot.sh
+		sudo /home/ovs1/xiaochen/workspace/VFs_restart.sh
 
 6.Load Static Rules to NIC(Don't edit user_config.json, copy it and modify the copy):
 	sudo /home/ovs1/xiaochen/nfp-sdk-6.0.2/p4/bin/rtecli config-reload -c user_config.json
